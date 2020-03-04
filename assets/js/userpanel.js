@@ -103,7 +103,7 @@ const processRequestLuggageStorage = id => {
   const datefrom = $("#datefrom")[0].value;
   const dateto = $("#dateto")[0].value;
   const location = $("#location")[0].value;
-  console.log(ltype);
+  // console.log(ltype);
   data = {
     ltype,
     name,
@@ -112,7 +112,7 @@ const processRequestLuggageStorage = id => {
     location,
     source: id
   };
-  console.log(data);
+  // console.log(data);
   $.ajax({
     url: "handlepost.php",
     type: "POST",
@@ -134,7 +134,6 @@ const handleGETRequest = (page, element) => {
     if (request.status === 200)
       if (request.readyState === 4) {
         //if the get request executes and returns some response
-        console.log(request.response);
         element.html(request.response);
       }
   };

@@ -1,4 +1,8 @@
 <?php
+
+##############################################################
+### TABLES CREATION UTILITY FILE    ##########################
+##############################################################
 require_once 'dbHandler.php';
 
 function createDB(){
@@ -167,7 +171,7 @@ else{
             luggage_name VARCHAR(20) NOT NULL,
             luggage_category_id INT NOT NULL,
             phone_number VARCHAR(10) NOT NULL,
-            store_from VARCHAR(30) NOT NULL,
+            store_from TIMESTAMP NOT NULL,
             store_to TIMESTAMP NOT NULL,
             payment_id FLOAT NOT NULL,
             PRIMARY KEY(luggage_id),

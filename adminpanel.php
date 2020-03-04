@@ -30,7 +30,7 @@ require_once 'dbHandler.php';
           <div class="text-light">Philip Opuka</div>
           <div class="text-light">email@email.com</div>
         </div>
-         <div>
+        <div>
           <button id="home" class="w-100 nav-btn text-white text-left">
             <i class="fas fa-home mx-4"></i>
             Home
@@ -43,23 +43,19 @@ require_once 'dbHandler.php';
           </button>
         </div>
         <div>
-          <button
-            id="add-staff"
-            class="w-100 nav-btn text-white text-left"
-          >
+          <button id="add-staff" class="w-100 nav-btn text-white text-left">
             <i class="fas fa-user-plus mx-4"></i>
             Add New Staff
           </button>
         </div>
         <div>
-          <button
-            id="remove-staff"
-            class="w-100 nav-btn text-white text-left"
-          >
+          <button id="remove-staff" class="w-100 nav-btn text-white text-left">
             <i class="fas fa-trash mx-4"></i>
             Remove Staff
           </button>
         </div>
+    
+
         <div>
           <button
             id="delivery-reports"
@@ -70,12 +66,15 @@ require_once 'dbHandler.php';
           </button>
         </div>
         <div>
-          <button id="booking-reports" class="w-100 nav-btn text-white text-left">
+          <button
+            id="booking-reports"
+            class="w-100 nav-btn text-white text-left"
+          >
             <i class="fas fa-sliders-h mx-4"></i>
             Booking Reports
           </button>
         </div>
-          <div>
+        <div>
           <button id="notifications" class="w-100 nav-btn text-white text-left">
             <i class="fas fa-sliders-h mx-4"></i>
             Notifications

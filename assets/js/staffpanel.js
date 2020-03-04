@@ -3,7 +3,7 @@ $("document").ready(() => {
   handleGETRequest("notifications.php", content_pane);
   content_pane
     ? $(
-        "#home,#update-luggage-status,#edit-profile,#confirm-payment,#credit-account,#cancel-delivery,#notifications,#logout"
+        "#add-location,#add-category,#home,#update-luggage-status,#edit-profile,#confirm-payment,#credit-account,#cancel-delivery,#notifications,#logout"
       ).on("click", event => {
         const { id } = event.target;
         id === "credit-account"
@@ -20,6 +20,10 @@ $("document").ready(() => {
           ? handleGETRequest("logout.php", content_pane)
           : id === "home"
           ? (location.href = "index.html")
+          : id === "add-category"
+          ? handleGETRequest("addcategory.php", content_pane)
+          : id === "add-location"
+          ? handleGETRequest("addlocation.php", content_pane)
           : null;
       })
     : null;

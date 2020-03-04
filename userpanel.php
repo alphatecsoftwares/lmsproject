@@ -13,7 +13,7 @@
   </head>
   <body>
     <div class="row">
-      <div class="col-md-3 position-fixed">
+      <div class="col-md-3">
         <div class="profile-seg text-center">
           <img
             class="profile-img rounded-circle my-2"
@@ -83,7 +83,7 @@
           </button>
         </div>
       </div>
-      <div class="col-md-9 content-pane text-center mt-4 offset-3">
+      <div class="col-md-9 content-pane text-center mt-4">
         <h4>
           Welcome {Name Here} To LMS Portal. The premier luggage management
           sytem

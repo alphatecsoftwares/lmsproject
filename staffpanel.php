@@ -44,6 +44,18 @@
             Update Luggage Status
           </button>
         </div>
+            <div>
+          <button id="add-category" class="w-100 nav-btn text-white text-left">
+            <i class="fas fa-trash mx-4"></i>
+            Add Category
+          </button>
+        </div>
+        <div>
+          <button id="add-location" class="w-100 nav-btn text-white text-left">
+            <i class="fas fa-trash mx-4"></i>
+            Add Location
+          </button>
+        </div>
         <div>
           <button
             id="credit-account"

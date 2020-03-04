@@ -48,6 +48,7 @@ function updateProfileDetails(){
 }
 
 function saveLuggageStorageDetails(){
+    $con=getDBConnection();
     $luggageType=$_POST['ltype'];
     $name=$_POST['name'];
     $date_from=$_POST['datefrom'];
@@ -92,6 +93,9 @@ function getDeliveryCost($luggageType){
  switch ($source) {
      case 'editprofile':
          updateProfileDetails();
+         break;
+    case 'requestluggagestorage':
+         saveLuggageStorageDetails();
          break;
      
      default:

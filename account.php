@@ -18,13 +18,7 @@
       }
     }
       ?>
-      <!-- <input
-        disabled
-        type="text"
-        id="phone"
-        placeholder="07xxxxxxx"
-        class="form-control"
-      /> -->
+ 
     </div>
   </div>
 </div>
@@ -44,13 +38,7 @@
         }
     }
       ?>
-      <!-- <input
-        disabled
-        type="text"
-        id="balance"
-        placeholder="KSh. 0"
-        class="form-control"
-      /> -->
+ 
     </div>
   </div>
 </div>
