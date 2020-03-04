@@ -1,0 +1,35 @@
+body {
+  overflow-x: hidden;
+  background-color: mintcream;
+}
+.nav-left {
+  background-color: darkslategrey;
+}
+.nav-btn {
+  height: 5rem;
+  background-color: darkslategrey;
+  border: none;
+}
+.nav-btn:hover,
+.nav-btn:focus,
+.nav-btn:active {
+  background-color: olivedrab;
+}
+.profile-seg {
+  background-color: lightslategrey;
+}
+
+.profile-img {
+  height: 5rem;
+  width: 5rem;
+}
+.no-wrap {
+  white-space: nowrap !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+}
+.n-button {
+  border: none !important;
+  background-color: mintcream !important;
+  color: navy;
+}
