@@ -23,7 +23,7 @@
           <div class="text-light">Philip Opuka</div>
           <div class="text-light">email@email.com</div>
         </div>
-           <div>
+        <div>
           <button id="home" class="w-100 nav-btn text-white text-left">
             <i class="fas fa-home mx-4"></i>
             Home
@@ -44,15 +44,24 @@
             Update Luggage Status
           </button>
         </div>
-            <div>
+        <div>
           <button id="add-category" class="w-100 nav-btn text-white text-left">
-            <i class="fas fa-trash mx-4"></i>
+            <i class="fas fa-plus mx-4"></i>
             Add Category
           </button>
         </div>
         <div>
+          <button
+            id="add-category-price"
+            class="w-100 nav-btn text-white text-left"
+          >
+            <i class="fas fa-edit mx-4"></i>
+            Edit Storage Price
+          </button>
+        </div>
+        <div>
           <button id="add-location" class="w-100 nav-btn text-white text-left">
-            <i class="fas fa-trash mx-4"></i>
+            <i class="fas fa-plus-circle mx-4"></i>
             Add Location
           </button>
         </div>
@@ -83,7 +92,7 @@
         </div>
         <div>
           <button id="logout" class="w-100 nav-btn text-white text-left">
-            <i class="fas fa-toggle-off mx-4"></i>
+            <i class="fas fa-sign-out-alt mx-4"></i>
             Log Out
           </button>
         </div>

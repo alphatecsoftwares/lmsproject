@@ -144,7 +144,6 @@ const saveLuggageDeliveryRequestDetails = id => {
   const ltype = $("#luggagetype")[0].value;
   const datefrom = $("#datefrom")[0].value;
   const dateto = $("#dateto")[0].value;
-  const location = $("#location")[0].value;
   const fname = $("#fname")[0].value;
   const lname = $("#lname")[0].value;
   const tel = $("#tel")[0].value;
@@ -161,7 +160,7 @@ const saveLuggageDeliveryRequestDetails = id => {
     password,
     tel
   };
-  console.log(data);
+  // console.log(data);
   $.ajax({
     url: "handlepost.php",
     type: "POST",

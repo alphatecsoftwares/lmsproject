@@ -11,7 +11,7 @@
   <span id="msg"></span>
   <div class="row justify-content-center mt-3">
     <div class="col-md-9">
-      <div class="form-group d-flex">
+      <div class="form-group ">
         <label for="luggagetype" class="mx-2">LuggageType</label>
         <select
           name="luggagetype"
@@ -26,7 +26,21 @@
       </div>
     </div>
   </div>
-
+  <div class="row justify-content-center ">
+    <div class="col-md-9 ">
+      <div class="form-group d-flex">
+        <label class="mx-2" for="luggage-name">Luggage Name</label>
+        <input
+          type="text"
+          name="luggage-name"
+          id="luggage-name"
+          placeholder="Luggage Name"
+          class="form-control"
+          required
+        />
+      </div>
+    </div>
+  </div>
   <div class="row justify-content-center">
     <div class="col-md-9">
       <div class="form-group d-flex">
@@ -50,8 +64,17 @@
         <label for="location" class="mx-2">Destination</label>
         <select name="location" id="location" class="form-control" required>
           <option value="">Select Destination</option>
-          <option value="chuka">Chuka</option>
-          <option value="chuka">Ndagani</option>
+      <?php
+      require_once 'dbHandler.php';
+              $con=getDBConnection();
+              $sql='SELECT * FROM lms.locations';
+              $result=$con->query($sql);
+                     if(mysqli_num_rows($result)>0){//luggage categories exists ?
+                     while($row=mysqli_fetch_array($result)){//iterate thru' 'em and display the categories
+                         echo '<option value='.$row['location_id'].'>'.$row['location_name'].'</option>';
+                     }
+                    }
+              ?>
         </select>
       </div>
     </div>
@@ -126,15 +149,13 @@
   <div class="row justify-content-center ">
     <div class="col-md-9 ">
       <div class="form-group d-flex">
-        <label class="mx-2" for="tel">Total Cost</label>
-        <input
-          type="tel"
-          name="tel"
-          id="tel"
-          placeholder="Ksh. 0"
-          class="form-control"
-          disabled
-        />
+        <label class="mx-2" for="cost">Total Cost</label>
+        <label
+          id="cost"
+          class="w-25 mx-2 form-control border border-secondary"
+          for="tel"
+          >Ksh. 0</label
+        >
       </div>
     </div>
   </div>

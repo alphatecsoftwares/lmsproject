@@ -54,8 +54,7 @@ require_once 'dbHandler.php';
             Remove Staff
           </button>
         </div>
-    
-
+   
         <div>
           <button
             id="delivery-reports"
