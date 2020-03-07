@@ -1,5 +1,6 @@
 <?php
 require_once 'dbHandler.php';
+session_start();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -19,15 +20,17 @@ require_once 'dbHandler.php';
       <div class="col-md-3">
         <div class="profile-seg text-center">
           <?php
-          $con=getConnection();
+          $con=getDBConnection();
 
           ?>
-          <!-- <img
+          <img
             class="profile-img rounded-circle my-2"
             src="./assets/images/image1.png"
             alt="user"
-          /> -->
-          <div class="text-light">Philip Opuka</div>
+          />
+          <div class="text-light"><?php
+         echo $_SESSION['user_id'];
+          ?></div>
           <div class="text-light">email@email.com</div>
         </div>
         <div>

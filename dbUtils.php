@@ -174,9 +174,11 @@ else{
             store_from TIMESTAMP NOT NULL,
             store_to TIMESTAMP NOT NULL,
             payment_id FLOAT NOT NULL,
+            location_id INT NOT NULL,
             PRIMARY KEY(luggage_id),
             FOREIGN KEY (phone_number) REFERENCES customers(phone_number) ON DELETE CASCADE,
-            FOREIGN KEY (luggage_category_id) REFERENCES luggagecategories(category_id) ON DELETE CASCADE
+            FOREIGN KEY (luggage_category_id) REFERENCES luggagecategories(category_id) ON DELETE CASCADE,
+            FOREIGN KEY (location_id) REFERENCES locations(location_id) ON DELETE CASCADE
 
         )";
         echo $con->query($sql)? "Table luggagedelivery created":"Error ".mysqli_error($con)."";

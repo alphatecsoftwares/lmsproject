@@ -1,15 +1,19 @@
 <?php
 require_once 'dbHandler.php';
+session_start();
 ?>
 <form id="requestluggagestorage" method="POST">
   <div class="text-center mt-3">
     <strong class="text-info ">Please Provide the Following Details</strong>
   </div>
+   <div class="text-center mt-3">
+     <span id="msg"></span>
+  </div>
   <div class="row justify-content-center mt-3">
     <div class="col-md-9">
       <div class="form-group d-flex">
         <label for="luggagetype" class="mx-2">LuggageType</label>
-        <select name="luggagetype" id="luggagetype" class="form-control">
+        <select name="luggagetype" id="luggageid" class="form-control" required>
           <option value="">Luggage Type</option>
         <?php
         $con=getDBConnection();
@@ -30,7 +34,7 @@ require_once 'dbHandler.php';
     <div class="col-md-9">
       <div class="form-group d-flex">
         <label for="name" class="mx-2">Name</label>
-        <input type="text" name="name" id="name" class="form-control" placeholder="Name" />
+        <input type="text" name="name" id="name" class="form-control" placeholder="Name" required />
       </div>
     </div>
   </div>
@@ -39,9 +43,9 @@ require_once 'dbHandler.php';
     <div class="col-md-9">
       <div class="form-group d-flex">
         <label for="datefrom" class="mx-2">Keep From</label>
-        <input type="date" name="From" id="datefrom" class="form-control" />
+        <input type="date" name="From" id="datefrom" class="form-control" required/>
         <label for="datefrom" class="mx-2">To</label>
-        <input type="date" name="dateto" id="dateto" class="form-control" />
+        <input type="date" name="dateto" id="dateto" class="form-control" required/>
       </div>
     </div>
   </div>
@@ -50,7 +54,7 @@ require_once 'dbHandler.php';
     <div class="col-md-9 ">
       <div class="form-group d-flex">
         <label for="location" class="mx-2">Location</label>
-        <select name="location" id="location" class="form-control">
+        <select name="location" id="location" class="form-control" required>
         <option value="">Select Location</option>
          <?php
         $con=getDBConnection();
@@ -74,13 +78,7 @@ require_once 'dbHandler.php';
         <label for="datefrom" class="mx-2">Total Cost</label>
     <div class="col-md-9">
       <div class="form-group">
-        <input
-          class="form-control"
-          type="text"
-          id="cost "
-          Value="Ksh. 0"
-          disabled
-        />
+        <label id="cost" class="form-control"></label>
       </div>
     </div>
   </div>

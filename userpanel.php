@@ -1,3 +1,11 @@
+<?php
+require_once "dbHandler.php";
+session_start();
+if(!isset($_SESSION['user_id'])){
+  header("Location: http://localhost/lmsproject/login.php");
+  exit;
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -17,11 +25,27 @@
         <div class="profile-seg text-center">
           <img
             class="profile-img rounded-circle my-2"
-            src="./assets/images/image1.png"
+            src="./assets/images/user.png"
             alt="user"
           />
-          <div class="text-light">ABCDE FGHIJ</div>
-          <div class="text-light">email@email.com</div>
+          <?php
+          if(isset($_SESSION['user_id'])){
+            $con=getDBConnection();
+            $sql="SELECT fname, lname, phone_number, email FROM customers WHERE phone_number=? LIMIT 1";
+            $stmt=$con->prepare($sql);
+                $stmt->bind_param('s', $_SESSION['user_id']);
+                $stmt->execute();
+                $result = $stmt->get_result();
+                // $user = $result->fetch_object();
+                if(mysqli_num_rows($result)>0){
+                  while($row=mysqli_fetch_array($result)){
+                    echo '<div class="text-light">'.$row['email'].'</div>';
+                    echo '<div class="text-light">'.$row['fname'].' '.$row['lname'].'</div>';
+                    echo '<div class="text-light">'.$row['phone_number'].'</div>';
+                  }
+                }
+            }
+          ?>
         </div>
         <div>
           <button id="home" class="w-100 nav-btn text-white text-left">

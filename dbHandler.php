@@ -5,8 +5,11 @@ function getDBConnection(){
     $USERRNAME="root";
     $PASS="";
     $DB_NAME="lms";
+    $con=null;
     // create connection to the database
+    if(!$con){
     $con=new mysqli($SERVER_NAME,$USERRNAME,$PASS,$DB_NAME);
+    }
     return $con;
 }
 

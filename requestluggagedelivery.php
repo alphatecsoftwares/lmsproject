@@ -2,6 +2,9 @@
   <div class="text-center mt-3">
     <strong>Please Provide Details For The Luggage</strong>
   </div>
+    <div class="text-center mt-3">
+    <span id="msg"></span>
+  </div>
   <div class="font-weight-light">
     <i>
       Please Note that your profile details will be used as the sender
@@ -11,7 +14,7 @@
   <span id="msg"></span>
   <div class="row justify-content-center mt-3">
     <div class="col-md-9">
-      <div class="form-group ">
+      <div class="form-group d-flex">
         <label for="luggagetype" class="mx-2">LuggageType</label>
         <select
           name="luggagetype"
@@ -20,8 +23,17 @@
           required
         >
           <option value="">Luggage Type</option>
-          <option value="farmproducts">Farm Products</option>
-          <option value="electronics">Electronics</option>
+        <?php
+      require_once 'dbHandler.php';
+              $con=getDBConnection();
+              $sql='SELECT * FROM lms.luggagecategories';
+              $result=$con->query($sql);
+                     if(mysqli_num_rows($result)>0){//luggage categories exists ?
+                     while($row=mysqli_fetch_array($result)){//iterate thru' 'em and display the categories
+                         echo '<option value='.$row['category_id'].'>'.$row['category_name'].'</option>';
+                     }
+                    }
+              ?>
         </select>
       </div>
     </div>
@@ -36,24 +48,30 @@
           id="luggage-name"
           placeholder="Luggage Name"
           class="form-control"
+          pattern="[A-Za-z]{2,20}"
           required
         />
       </div>
     </div>
   </div>
-  <div class="row justify-content-center">
-    <div class="col-md-9">
+    <div class="row justify-content-center">
+    <div class="col-md-9 ">
       <div class="form-group d-flex">
-        <label for="datefrom" class="mx-2">Departure</label>
-        <input
-          type="date"
-          name="From"
-          id="datefrom"
-          class="form-control"
-          required
-        />
-        <label for="datefrom" class="mx-2">Expected Arrival</label>
-        <input type="date" name="dateto" id="dateto" class="form-control" />
+        <label for="location" class="mx-2">Origin</label>
+        <select name="location" id="origin" class="form-control" required>
+          <option value="">Select Origin</option>
+      <?php
+      require_once 'dbHandler.php';
+              $con=getDBConnection();
+              $sql='SELECT * FROM lms.locations';
+              $result=$con->query($sql);
+                     if(mysqli_num_rows($result)>0){//luggage categories exists ?
+                     while($row=mysqli_fetch_array($result)){//iterate thru' 'em and display the categories
+                         echo '<option value='.$row['location_id'].'>'.$row['location_name'].'</option>';
+                     }
+                    }
+              ?>
+        </select>
       </div>
     </div>
   </div>
@@ -62,7 +80,7 @@
     <div class="col-md-9 ">
       <div class="form-group d-flex">
         <label for="location" class="mx-2">Destination</label>
-        <select name="location" id="location" class="form-control" required>
+        <select name="location" id="destination" class="form-control" required>
           <option value="">Select Destination</option>
       <?php
       require_once 'dbHandler.php';
@@ -85,30 +103,6 @@
   <div class="row justify-content-center ">
     <div class="col-md-9 ">
       <div class="form-group d-flex">
-        <label class="mx-2" for="fname">First Name</label>
-        <input
-          type="text"
-          name="fname"
-          id="fname"
-          placeholder="First Name"
-          class="form-control"
-          required
-        />
-        <label class="mx-2" for="lname">Last Name</label>
-        <input
-          type="text"
-          name="lname"
-          id="lname"
-          placeholder="Last Name"
-          class="form-control"
-          required
-        />
-      </div>
-    </div>
-  </div>
-  <div class="row justify-content-center ">
-    <div class="col-md-9 ">
-      <div class="form-group d-flex">
         <label class="mx-2" for="tel">Phone Number</label>
         <input
           type="tel"
@@ -116,15 +110,8 @@
           id="tel"
           placeholder="07xxxxxxxx"
           class="form-control"
+          pattern="[0-9]{10}"
           required
-        />
-        <label class="mx-2" for="email">Email</label>
-        <input
-          type="email"
-          name="email"
-          id="email"
-          placeholder="email@email.com"
-          class="form-control"
         />
       </div>
     </div>
@@ -132,18 +119,6 @@
 
   <div class="row  justify-content-center">
     <div class="text-center my-3"><strong>Billing Details</strong></div>
-  </div>
-
-  <div class="row justify-content-center">
-    <div class="col-md-9 ">
-      <div class="form-group d-flex">
-        <label for="location" class="mx-2">Debited Account</label>
-        <select name="location" id="location" class="form-control" required>
-          <option value="lmsaccount">Select Account</option>
-          <option value="chuka">LMSAccount</option>
-        </select>
-      </div>
-    </div>
   </div>
 
   <div class="row justify-content-center ">

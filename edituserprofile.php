@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <form autocomplete="off" id="editprofile" enctype="multipart/form-data">
   <div class="text-center my-3">
     <span id="msg"></span>
@@ -38,14 +41,12 @@
           class="form-control mr-2"
           required
         />
-        <input
-          type="tel"
-          name="tel"
-          id="tel"
-          placeholder="07xxxxxxxxx"
-          class="form-control mr-2"
-          required
-        />
+     <label class="form-control">
+       Phone: 
+       <?php
+       echo $_SESSION['user_id'];
+       ?>
+     </label>
       </div>
     </div>
   </div>
@@ -53,14 +54,6 @@
   <div class="row justify-content-center">
     <div class="col-md-9 ">
       <div class="form-group d-flex">
-        <input
-          type="text"
-          name="username"
-          id="username"
-          placeholder="Username"
-          class="form-control mr-2"
-          required
-        />
         <select
           name="location"
           id="location"
@@ -68,16 +61,18 @@
           required
         >
           <option value="">Change Location</option>
-          <option value="chuka">Chuka</option>
-          <option value="chuka">Ndagani</option>
+          <?php
+                require_once 'dbHandler.php';
+                        $con=getDBConnection();
+                        $sql='SELECT * FROM lms.locations';
+                        $result=$con->query($sql);
+                               if(mysqli_num_rows($result)>0){//luggage categories exists ?
+                               while($row=mysqli_fetch_array($result)){//iterate thru' 'em and display the categories
+                                   echo '<option value='.$row['location_id'].'>'.$row['location_name'].'</option>';
+                               }
+                              }
+                        ?>
         </select>
-      </div>
-    </div>
-  </div>
-  <div class="row justify-content-center">
-    <div class="col-md-9 ">
-      <div class="form-group d-flex">
-        <input type="file" name="profile" id="profile" class="form-control" />
       </div>
     </div>
   </div>

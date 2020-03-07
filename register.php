@@ -1,3 +1,6 @@
+<?php
+require_once "dbHandler.php";
+?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -12,13 +15,16 @@
   <body>
     <div class="row justify-content-center my-5">
       <div class="col-md-6 border border-success rounded">
-        <form autocomplete="off" id="editprofile" enctype="multipart/form-data">
+        <form autocomplete="off" id="register-form" method="POST">
           <div class="text-center my-3">
             <strong>Create Account</strong>
           </div>
+          <div class="text-center my-3">
+            <span class="msg">Create Account</span>
+          </div>
           <div class="row justify-content-center">
             <div class="col-md-9">
-              <span id="msg">Message Here</span>
+              <span id="msg"></span>
             </div>
           </div>
           <div class="row justify-content-center ">
@@ -60,6 +66,30 @@
                   id="tel"
                   placeholder="07xxxxxxxxx"
                   class="form-control mr-2"
+                  pattern="[0-9]{10}"
+                  required
+                />
+              </div>
+            </div>
+          </div>
+
+             <div class="row justify-content-center ">
+            <div class="col-md-9 ">
+              <div class="form-group d-flex">
+                <input
+                  type="password"
+                  name="password"
+                  id="password"
+                  placeholder="Password"
+                  class="form-control mr-2"
+                  required
+                />
+                <input
+                  type="password"
+                  name="cpassword"
+                  id="cpassword"
+                  placeholder="Confirm Password"
+                  class="form-control mr-2"
                   required
                 />
               </div>
@@ -69,14 +99,6 @@
           <div class="row justify-content-center">
             <div class="col-md-9 ">
               <div class="form-group d-flex">
-                <input
-                  type="text"
-                  name="username"
-                  id="username"
-                  placeholder="Username"
-                  class="form-control mr-2"
-                  required
-                />
                 <select
                   name="location"
                   id="location"
@@ -84,22 +106,17 @@
                   required
                 >
                   <option value="">Location</option>
-                  <option value="chuka">Chuka</option>
-                  <option value="chuka">Ndagani</option>
+             <?php
+                  $con=getDBConnection();
+                  $sql='SELECT * FROM lms.locations';
+                  $result=$con->query($sql);
+                    if(mysqli_num_rows($result)>0){//luggage categories exists ?
+               while($row=mysqli_fetch_array($result)){//iterate thru' 'em and display the categories
+                   echo '<option value='.$row['location_id'].'>'.$row['location_name'].'</option>';
+               }
+              }
+        ?>
                 </select>
-              </div>
-            </div>
-          </div>
-          <div class="row justify-content-center">
-            <div class="col-md-9 ">
-              <div class="form-group d-flex">
-                <label for="profile" class="mr-3">Picture</label>
-                <input
-                  type="file"
-                  name="profile"
-                  id="profile"
-                  class="form-control"
-                />
               </div>
             </div>
           </div>
@@ -112,6 +129,7 @@
                 </button>
                 <button
                   type="submit"
+                  name="submit"
                   id="changeprofile"
                   class="btn btn-outline-success"
                 >
@@ -132,5 +150,14 @@
         </form>
       </div>
     </div>
+      <script src="./assets/jquery/dist/jquery.min.js"></script>
+      <script src="./assets/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="assets/js/register.js"></script>
   </body>
 </html>
+<?php
+if(isset($_POST['submit'])){
+
+}
+
+?>

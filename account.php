@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <div class="row  justify-content-center">
   <div class="text-center my-3"><strong>Account Information</strong></div>
 </div>
@@ -8,7 +11,7 @@
       <label class="mx-2" for="tel">Phone Number</label>
       <?php
       require_once 'dbHandler.php';
-      $userid="0777777777";
+      $userid=$_SESSION['user_id'];
       $con=getDBConnection();
       $sql="SELECT * FROM customers WHERE phone_number='$userid'";
       $result=$con->query($sql);
@@ -28,7 +31,7 @@
       <label class="mx-2" for="tel">Account Balance</label>
        <?php
       require_once 'dbHandler.php';
-      $userid="0777777777";
+      $userid=$_SESSION['user_id'];
       $con=getDBConnection();
       $sql="SELECT * FROM customers WHERE phone_number=+'$userid'";
       $result=$con->query($sql);

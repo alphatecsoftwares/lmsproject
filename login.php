@@ -1,3 +1,7 @@
+<?php
+require_once "dbHandler.php";
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -21,11 +25,14 @@
         <form
           class="my-5"
           autocomplete="off"
-          id="editprofile"
-          enctype="multipart/form-data"
+          id="login-form"
+          method="POST"
         >
           <div class="text-center my-3">
             Login
+          </div>
+            <div class="text-center my-3">
+            <span id="msg"></span>
           </div>
 
           <div class="row justify-content-center">
@@ -33,9 +40,9 @@
               <div class="form-group d-flex">
                 <input
                   type="text"
-                  name="email"
-                  id="email"
-                  placeholder="Email"
+                  name="phone"
+                  id="phone"
+                  placeholder="Phone"
                   class="form-control"
                 />
               </div>
@@ -60,8 +67,7 @@
             <div class="col-md-8 ">
               <div class="form-group d-flex">
                 <button
-                  type="submit"
-                  id="login"
+                  id="submit"
                   class="btn btn-outline-success w-25"
                 >
                   Login
@@ -85,5 +91,14 @@
         </form>
       </div>
     </div>
+     <script src="./assets/jquery/dist/jquery.min.js"></script>
+    <script src="./assets/js/login.js"></script>
   </body>
 </html>
+<!-- 
+
+
+//   }
+// }
+// } -->
+
