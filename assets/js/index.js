@@ -1,5 +1,4 @@
 $("document").ready(() => {
-  console.log("Index Page Loaded");
   data = {
     submit: "submit"
   };
@@ -8,7 +7,7 @@ $("document").ready(() => {
     type: "POST",
     data,
     success: res => {
-      console.log(res);
+      // console.log(res);
     }
   });
 });

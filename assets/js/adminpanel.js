@@ -11,7 +11,7 @@ $("document").ready(() => {
           : id === "notifications"
           ? handleGETRequest("notifications.php", content_pane)
           : id === "edit-profile"
-          ? handleGETRequest("edituserprofile.php", content_pane)
+          ? handleGETRequest("editstaffdetails.php", content_pane)
           : id === "delivery-reports"
           ? handleGETRequest("deliveryreports.php", content_pane)
           : id === "booking-reports"

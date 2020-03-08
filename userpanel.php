@@ -1,7 +1,7 @@
 <?php
 require_once "dbHandler.php";
 session_start();
-if(!isset($_SESSION['user_id'])){
+if(!isset($_SESSION['user_id'])||$_SESSION['user_type']!==3){//if user is not logged in,redirect to login
   header("Location: http://localhost/lmsproject/login.php");
   exit;
 }
@@ -83,20 +83,24 @@ if(!isset($_SESSION['user_id'])){
             Request Luggage Delivery
           </button>
         </div>
-        <div>
-          <button
-            id="check-luggage-status"
-            class="w-100 nav-btn text-white text-left"
-          >
-            <i class="fas fa-project-diagram mx-4"></i>
-            Check Luggage Transit Status
-          </button>
-        </div>
         <div class="">
           <button id="notifications" class="w-100 nav-btn text-white text-left">
             <i class="fas fa-envelope mx-4"></i>
             Notifications
-            <span id="numofnotifications" class="badge badge-info">0</span>
+            <span id="numofnotifications" class="badge badge-info">
+              <?php
+              $con=getDBConnection();
+              $sql="SELECT COUNT(*) AS c FROM messages WHERE to_id=? AND status=?";
+              $stmt=$con->prepare($sql);
+              $status=0;
+               $stmt->bind_param('si', $_SESSION['user_id'],$status);
+                $stmt->execute();
+                $result = $stmt->get_result();
+            while($row=mysqli_fetch_array($result)){
+              echo $row['c'];
+            }
+              ?>
+            </span>
           </button>
         </div>
 
@@ -109,8 +113,23 @@ if(!isset($_SESSION['user_id'])){
       </div>
       <div class="col-md-9 content-pane text-center mt-4">
         <h4>
-          Welcome {Name Here} To LMS Portal. The premier luggage management
-          sytem
+          <?php
+          if(isset($_SESSION['user_id'])){
+            $con=getDBConnection();
+            $sql="SELECT fname, lname, phone_number, email FROM customers WHERE phone_number=? LIMIT 1";
+            $stmt=$con->prepare($sql);
+                $stmt->bind_param('s', $_SESSION['user_id']);
+                $stmt->execute();
+                $result = $stmt->get_result();
+                // $user = $result->fetch_object();
+                if(mysqli_num_rows($result)>0){
+                  while($row=mysqli_fetch_array($result)){
+                    echo '<div>'.'Welcome '.$row['fname'].' '.$row['lname'].' To LMS Portal. The premier luggage management
+          sytem'.'</div>';
+                  }
+                }
+            }
+          ?>
         </h4>
         <div id="content-pane"></div>
       </div>

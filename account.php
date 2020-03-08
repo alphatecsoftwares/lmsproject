@@ -35,10 +35,13 @@ session_start();
       $con=getDBConnection();
       $sql="SELECT * FROM customers WHERE phone_number=+'$userid'";
       $result=$con->query($sql);
-      if($result){
+      if(mysqli_num_rows($result)>0){
         while($row=mysqli_fetch_array($result)){
         echo '<input type="text" value=Ksh.'.$row['amount'].' class="form-control"'.' disabled/>';
         }
+    }else{
+        echo '<input type="text" value=Ksh.0'.' class="form-control"'.' disabled/>';
+
     }
       ?>
  

@@ -1,6 +1,12 @@
+<?php
+session_start();
+?>
 <form autocomplete="off" id="editprofile" enctype="multipart/form-data">
   <div class="text-center my-3">
-   Create New Staff
+    <span id="msg"></span>
+  </div>
+  <div class="text-center my-3">
+    Edit Profile
   </div>
   <div class="row justify-content-center ">
     <div class="col-md-9 ">
@@ -35,11 +41,30 @@
           class="form-control mr-2"
           required
         />
+     <label class="form-control">
+       Phone: 
+       <?php
+       echo $_SESSION['user_id'];
+       ?>
+     </label>
+      </div>
+    </div>
+  </div>
+
+  <div class="row justify-content-center ">
+    <div class="col-md-9 ">
+      <div class="form-group d-flex">
         <input
-          type="tel"
-          name="tel"
-          id="tel"
-          placeholder="07xxxxxxxxx"
+          type="password"
+          id="password"
+          placeholder="Password"
+          class="form-control mr-2"
+          required
+        />
+        <input
+          type="password"
+          id="cpassword"
+          placeholder="Confirm Password"
           class="form-control mr-2"
           required
         />
@@ -47,32 +72,6 @@
     </div>
   </div>
 
-  <div class="row justify-content-center">
-    <div class="col-md-9 ">
-      <div class="form-group d-flex">
-       
-        <select
-          name="location"
-          id="location"
-          class="form-control mr-2"
-          required
-        >
-          <option value="">Branch</option>
-         <?php
-      require_once 'dbHandler.php';
-              $con=getDBConnection();
-              $sql='SELECT * FROM lms.locations';
-              $result=$con->query($sql);
-                     if(mysqli_num_rows($result)>0){//luggage categories exists ?
-                     while($row=mysqli_fetch_array($result)){//iterate thru' 'em and display the categories
-                         echo '<option value='.$row['location_id'].'>'.$row['location_name'].'</option>';
-                     }
-                    }
-              ?>
-        </select>
-      </div>
-    </div>
-  </div>
   <div class="row justify-content-center">
     <div class="col-md-9 ">
       <div class="form-group d-flex">

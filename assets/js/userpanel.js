@@ -317,7 +317,6 @@ const handleGETRequest = (page, element) => {
   request.open("GET", page, true);
   request.onload = () => {
     // render the loaded page if open() runs successfully
-
     if (request.status === 200)
       if (request.readyState === 4) {
         //if the get request executes and returns some response
@@ -377,5 +376,25 @@ $(document).ready(() => {
     $("#content-pane")
       .add("<div />")
       .text("Details Are Coming");
+  });
+});
+
+$(document).ready(() => {
+  $("#content-pane").on("click", "#msg-span>button", event => {
+    const { id } = event.target;
+    const params = {
+      message_id: id
+    };
+    const http = new XMLHttpRequest();
+    http.open("POST", "notificationdetails.php", true);
+    http.setRequestHeader("Content-type", "application/json");
+    http.send(JSON.stringify(params));
+    http.onload = function() {
+      if (http.status === 200)
+        if (http.readyState === 4) {
+          $("#content-pane").html(http.response);
+        }
+    };
+    http.send();
   });
 });

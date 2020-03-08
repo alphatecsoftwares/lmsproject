@@ -93,7 +93,7 @@ else{
             phone_number VARCHAR(10) NOT NULL,
             email VARCHAR(50) NOT NULL,
             profile_path VARCHAR(100) NOT NULL,
-            amount FLOAT,
+            amount FLOAT NOT NULL DEFAULT 0,
             location_id INT NOT NULL,
             password VARCHAR(300) NOT NULL,
             PRIMARY KEY(phone_number),
@@ -116,7 +116,7 @@ else{
             email VARCHAR(50) NOT NULL,
             staff_type_id INT NOT NULL,
             password VARCHAR(300) NOT NULL,
-            PRIMARY KEY(email),
+            PRIMARY KEY(phone_number),
             FOREIGN KEY(staff_type_id) REFERENCES stafftypes(staff_type_id)
 
         )";
@@ -197,7 +197,7 @@ else{
             to_id VARCHAR(10) NOT NULL,
             message VARCHAR(2000) NOT NULL,
             date_created timestamp DEFAULT CURRENT_TIMESTAMP,
-            status BOOLEAN,
+            status BOOLEAN DEFAULT 0,
             PRIMARY KEY(message_id),
             FOREIGN KEY (from_id) REFERENCES customers(phone_number) ON DELETE CASCADE,
             FOREIGN KEY (to_id) REFERENCES customers(phone_number) ON DELETE CASCADE
